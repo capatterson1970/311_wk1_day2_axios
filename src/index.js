@@ -1,3 +1,4 @@
+const axios = require('axios');
 // import axios here
 
 // Please note that it is normally not considered best practice to commit 
@@ -7,18 +8,41 @@ const api_key = 'd771b19ef336ed8381def3a60b574464'
 
 const discoverMovie = () => {
   const url = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}`
-  // code here
+  
+  return axios.get(url)
+  
+  .then(function (response) {
+    // console.log(response);
+    return response;
+        });
 }
 
 const getMovieById = (id) => {
   const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`
-  // code here
+  
+  return axios.get(url)
+  
+  .then(function (response) {
+    // console.log(response);
+    return response.data;
+        });
 }
 
 const getMovieByIdFailure = () => {
-  const fakeId = 1 // FAKE ID HERE
+  const fakeId = 5783 // FAKE ID HERE
   const url = `https://api.themoviedb.org/3/movie/${fakeId}?api_key=${api_key}`
-  // code here
+  
+  return axios.get(url)
+  
+  .then(function (response) {
+    // console.log(response);
+    return response;
+        })
+
+  .catch(err => {
+    console.log(err.response.status);
+    return err.response.status;
+  });
 }
 
 
